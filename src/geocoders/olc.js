@@ -1,5 +1,6 @@
 var L = require('leaflet'),
-	Util = require('../util');
+	Util = require('../util'),
+	OpenLocationCode = require('./openlocationcode');
 
 module.exports = {
 	class: L.Class.extend({
@@ -11,7 +12,6 @@ module.exports = {
 
 		geocode: function(query, cb, context) {
 			//convert a code to a location
-			//get three words and make a dot based string
 			var results = [];
 			var res = OpenLocationCode.decode(query);
 			var latLngCenter = L.latLng(res.latitudeCenter,res.longitudeCenter);
@@ -32,8 +32,6 @@ module.exports = {
 
 		reverse: function(location, scale, cb, context) {
 			//convert location to code
-			//location.lat,location.lng
-			////scale ?
 			var results = [];
 			var res = OpenLocationCode.encode(location.lat,location.lng);
 			var latLng = L.latLng(location.lat,location.lng);
