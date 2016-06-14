@@ -27,12 +27,12 @@ module.exports = {
 						center: latLng
 					};
 				}
-
 				cb.call(context, results);
 			});
 		},
 
 		suggest: function(query, cb, context) {
+			//change to use W3W search api part
 			return this.geocode(query, cb, context);
 		},
 
